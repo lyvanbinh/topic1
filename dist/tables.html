@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content />
+        <meta name="author" content />
+        <title>Dashboard - SB Admin</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+            rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+            crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+                id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form
+                class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown"
+                        href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark"
+                    id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i
+                                        class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <a class="nav-link collapsed" href="#"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapsePages"
+                                aria-expanded="false"
+                                aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i
+                                        class="fas fa-book-open"></i></div>
+                                Pages
+                                <div class="sb-sidenav-collapse-arrow"><i
+                                        class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages"
+                                aria-labelledby="headingTwo"
+                                data-bs-parent="#sidenavAccordion">
+                                <nav
+                                    class="sb-sidenav-menu-nested nav accordion"
+                                    id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#pagesCollapseError"
+                                        aria-expanded="false"
+                                        aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i
+                                                class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse"
+                                        id="pagesCollapseError"
+                                        aria-labelledby="headingOne"
+                                        data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401
+                                                Page</a>
+                                            <a class="nav-link" href="404.html">404
+                                                Page</a>
+                                            <a class="nav-link" href="500.html">500
+                                                Page</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <!-- <div class="sb-sidenav-menu-heading">Addons</div> -->
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i
+                                        class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i
+                                        class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                        </ol>
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Bảng Người Dùng
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên</th>
+                                            <th>Mật Khẩu</th>
+                                            <th>Thuộc Tính</th>
+                                            <th>Cách Thức Đăng Nhập</th>
+                                            <th>Ngày Đăng Ký</th>
+                                            <th>Chức Năng</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Tên</th>
+                                            <th>Mật Khẩu</th>
+                                            <th>Thuộc Tính</th>
+                                            <th>Cách Thức Đăng Nhập</th>
+                                            <th>Ngày Đăng Ký</th>
+                                            <th>Chức Năng</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/thanh.blue.3517</td>
+                                            <td>2011/04/25</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Accountant</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100074901320511</td>
+                                            <td>2011/07/25</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ashton Cox</td>
+                                            <td>Junior</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100071087542817</td>
+                                            <td>2009/01/12</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cedric Kelly</td>
+                                            <td>Senior1234</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100019553319073</td>
+                                            <td>2012/03/29</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Airi Satou</td>
+                                            <td>Acc232</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100073453217507</td>
+                                            <td>2008/11/28</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>Integration@888</td>
+                                            <td>Nhân Viên</td>
+                                            <td>https://www.facebook.com/xuanchieniuthuhoang3</td>
+                                            <td>2012/12/02</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Herrod Chandler</td>
+                                            <td>Sale@003</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100069712053927</td>
+                                            <td>2012/08/06</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rhona Davidson</td>
+                                            <td>Specia@list</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0987654321</td>
+                                            <td>2010/10/14</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Colleen Hurst</td>
+                                            <td>Hurst_1999</td>
+                                            <td>Khách Hàng</td>
+                                            <td>Collen@gmail.com</td>
+                                            <td>2009/09/15</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sonya Frost</td>
+                                            <td>Software</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100016864997120</td>
+                                            <td>2008/12/13</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jena Gaines</td>
+                                            <td>Office365</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0875669844</td>
+                                            <td>2008/12/19</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Quinn Flynn</td>
+                                            <td>Supportlead</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0875984124</td>
+                                            <td>2013/03/03</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Charde Marshall</td>
+                                            <td>Regional007</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/ngocanhbg03</td>
+                                            <td>2008/10/16</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Haley Kennedy</td>
+                                            <td>Kennedy_2010</td>
+                                            <td>Khách Hàng</td>
+                                            <td>Haley@gmail.com</td>
+                                            <td>2012/12/18</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tatyana Fitzpatrick</td>
+                                            <td>Regional8888</td>
+                                            <td>Khách Hàng</td>
+                                            <td>Tatyana000098@gmail.com</td>
+                                            <td>2010/03/17</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Michael Silva</td>
+                                            <td>Marketinggggg</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0358795647</td>
+                                            <td>2012/11/27</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Paul Byrd</td>
+                                            <td>Chief009</td>
+                                            <td>Nhân Viên</td>
+                                            <td>Paulbyrd@gmail.com</td>
+                                            <td>2010/06/09</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gloria Little</td>
+                                            <td>Systemsadministrator</td>
+                                            <td>Nhân Viên</td>
+                                            <td>0359874666</td>
+                                            <td>2009/04/10</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bradley Greer</td>
+                                            <td>Softwareengineer</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100029239334190</td>
+                                            <td>2012/10/13</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dai Rios</td>
+                                            <td>Rios@2012</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/dongxuanhop1743</td>
+                                            <td>2012/09/26</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jenette Caldwell</td>
+                                            <td>Development@2101</td>
+                                            <td>Nhân Viên</td>
+                                            <td>0378968521</td>
+                                            <td>2011/09/03</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Yuri Berry</td>
+                                            <td>Chief&009</td>
+                                            <td>Nhân Viên</td>
+                                            <td>0777777777</td>
+                                            <td>2009/06/25</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Caesar Vance</td>
+                                            <td>Support_vance</td>
+                                            <td>Nhân Viên</td>
+                                            <td>0359874466</td>
+                                            <td>2011/12/12</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Doris Wilder</td>
+                                            <td>Sales$5555</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0369888888</td>
+                                            <td>2010/09/20</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Angelica Ramos</td>
+                                            <td>Ceo_2222</td>
+                                            <td>Khách Hàng</td>
+                                            <td>Angelica@gmail.com</td>
+                                            <td>2009/10/09</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gavin Joyce</td>
+                                            <td>Developer_8888</td>
+                                            <td>Khách Hàng</td>
+                                            <td>Gavin8888@gmail.com</td>
+                                            <td>2010/12/22</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jennifer Chang</td>
+                                            <td>Regional_director</td>
+                                            <td>Khách Hàng</td>
+                                            <td>Jennifer01022013@gmail.com</td>
+                                            <td>2010/11/14</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brenden Wagner</td>
+                                            <td>Singineer</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0321456987</td>
+                                            <td>2011/06/07</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fiona Green</td>
+                                            <td>Chief&8888</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0987456321</td>
+                                            <td>2010/03/11</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shou Itou</td>
+                                            <td>Regional999999</td>
+                                            <td>Khách Hàng</td>
+                                            <td>Shouito@gmail.com</td>
+                                            <td>2011/08/14</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Michelle House</td>
+                                            <td>Integrational</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100030918561925</td>
+                                            <td>2011/06/02</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Suki Burks</td>
+                                            <td>Sukiburks_2003</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100050043351980</td>
+                                            <td>2009/10/22</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Prescott Bartlett</td>
+                                            <td>Bartlett@1858</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100004255546798</td>
+                                            <td>2011/05/07</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gavin Cortez</td>
+                                            <td>Gavin_2003</td>
+                                            <td>Khách Hàng</td>
+                                            <td>cortez@gmail.com</td>
+                                            <td>2008/10/26</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Martena Mccray</td>
+                                            <td>Martena46</td>
+                                            <td>Khách Hàng</td>
+                                            <td>mccray@gmail.com</td>
+                                            <td>2011/03/09</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Unity Butler</td>
+                                            <td>Butler447</td>
+                                            <td>Khách Hàng</td>
+                                            <td>butler@gmail.com</td>
+                                            <td>2009/12/09</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Howard Hatfield</td>
+                                            <td>Hatfield2008</td>
+                                            <td>Khách Hàng</td>
+                                            <td>hatfield@gmail.com</td>
+                                            <td>2008/12/16</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hope Fuentes</td>
+                                            <td>Fuentes2010</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0325896471</td>
+                                            <td>2010/02/12</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vivian Harrell</td>
+                                            <td>Harrell2009</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0896666666</td>
+                                            <td>2009/02/14</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Timothy Mooney</td>
+                                            <td>Timothy11122008</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0999999999</td>
+                                            <td>2008/12/11</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jackson Bradshaw</td>
+                                            <td>Bradshaw26092008</td>
+                                            <td>Nhân Viên</td>
+                                            <td>0333333333</td>
+                                            <td>2008/09/26</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Olivia Liang</td>
+                                            <td>Liangolivia</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100041012073844</td>
+                                            <td>2011/02/03</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bruno Nash</td>
+                                            <td>Bruno2011</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100011544510585</td>
+                                            <td>2011/05/03</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sakura Yamamoto</td>
+                                            <td>Yamamoto2009</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100033924901452</td>
+                                            <td>2009/08/19</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thor Walton</td>
+                                            <td>Walton1108</td>
+                                            <td>Nhân Viên</td>
+                                            <td>https://www.facebook.com/dxbawcs</td>
+                                            <td>2013/08/11</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Finn Camacho</td>
+                                            <td>Camacho0707</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/profile.php?id=100029195597134</td>
+                                            <td>2009/07/07</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Serge Baldwin</td>
+                                            <td>Baldwin0412</td>
+                                            <td>Khách Hàng</td>
+                                            <td>https://www.facebook.com/thuyanh.tran.3386585</td>
+                                            <td>2012/04/09</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zenaida Frank</td>
+                                            <td>Zenaida0401</td>
+                                            <td>Nhân Viên</td>
+                                            <td>zenaida@gmail.com</td>
+                                            <td>2010/01/04</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zorita Serrano</td>
+                                            <td>Serrano062012</td>
+                                            <td>Khách Hàng</td>
+                                            <td>serrano@gmail.com</td>
+                                            <td>2012/06/01</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jennifer Acosta</td>
+                                            <td>Jennifer01022013</td>
+                                            <td>Khách Hàng</td>
+                                            <td>acossta@gmail.com</td>
+                                            <td>2013/02/01</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cara Stevens</td>
+                                            <td>Stevens@444</td>
+                                            <td>Nhân Viên</td>
+                                            <td>stevens999@gmail.com</td>
+                                            <td>2011/12/06</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hermione Butler</td>
+                                            <td>Hermione#2011</td>
+                                            <td>Khách Hàng</td>
+                                            <td>bbbbbbbbbuttttt@gmail.com</td>
+                                            <td>2011/03/21</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lael Greer</td>
+                                            <td>Greer$022009</td>
+                                            <td>Khách Hàng</td>
+                                            <td>greeer2993@gmail.com</td>
+                                            <td>2009/02/27</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jonas Alexander</td>
+                                            <td>Alexander888</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0355555555</td>
+                                            <td>2010/07/14</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shad Decker</td>
+                                            <td>Decker987654321</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0366666666</td>
+                                            <td>2008/11/13</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Michael Bruce</td>
+                                            <td>Michael@5555</td>
+                                            <td>Khách Hàng</td>
+                                            <td>0388888888</td>
+                                            <td>2011/06/27</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Donna Snider</td>
+                                            <td>Donna27age</td>
+                                            <td>Nhân Viên</td>
+                                            <td>0387777777</td>
+                                            <td>2011/01/25</td>
+                                            <td><button>Xóa</button> <button>Sửa</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div
+                            class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your
+                                Website 2021</div>
+
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+            crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+            crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>
