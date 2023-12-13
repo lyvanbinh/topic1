@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Kiểm tra tên đăng nhập và mật khẩu
         if (usernameInput.value === 'admin' && passwordInput.value === 'admin') {
             // Nếu đúng, chuyển hướng đến trang index.html
-            window.location.href = '/dist/index.html';
+            window.location.href = 'index.html';
         } else {
             // Nếu sai, hiển thị thông báo hoặc thực hiện các hành động khác
             alert('Invalid username or password. Please try again.');
